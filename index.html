@@ -23,14 +23,17 @@
         <div class="col-md-4 border-right">
           <h2 class="text-center">All stars</h2>
           <input type="text" class="form-control" />
+          <p>Click on a repo to view its README</p>
+          <ul class="repo_list">
+            <li ng-repeat="repo in repository_list">
+              <h4><a href="">{{repo.name}}</a></h4>
+              <p>{{repo.description}}</p>
+              
+            </li>
+          </ul>
         </div>
         <div class="col-md-8">
-            <p>Click on a repo to view its README</p>
-            <ul>
-              <li>
-                
-              </li>
-            </ul>
+
         </div>
       </div>
 
