@@ -1,6 +1,18 @@
 var app = angular.module("stargazing", []);
 var repos = 0;
 
+app.controller("StarController", ["$scope", "$http", function($scope, $http){
+
+	$http({
+		method: 'JSONP',
+		url: 'http://api.github.com/users/TheRakken/starred?callback=JSON_CALLBACK'
+	}).then(function(response){
+		
+	},function(response){
+
+	});
+}]);
+
 app.controller("StarController", function($scope, $http){
 
 	$http.jsonp('http://api.github.com/users/TheRakken/starred?callback=kallbuck')
