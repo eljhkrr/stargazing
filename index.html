@@ -28,7 +28,10 @@
             <li ng-repeat="repo in repository_list">
               <h4><a href="{{repo.html_url}}">{{repo.name}}</a></h4>
               <p>{{repo.description}}</p>
-              <p>{{repo.stargazers_count}} Stars {{repo.forks}} Forks</p>
+              <p>
+                <a href="{{repo.stargazers_url}}">{{repo.stargazers_count}} Stars</a> 
+                <a href="{{repo.forks_url}}">{{repo.forks}} Forks</a>
+              </p>
             </li>
           </ul>
         </div>
