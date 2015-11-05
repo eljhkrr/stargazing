@@ -26,7 +26,7 @@
           <p>Click on a repo to view its README</p>
           <ul class="repo_list">
             <li ng-repeat="repo in repository_list">
-              <h4><a href="">{{repo.name}}</a></h4>
+              <h4><a href="{{repo.html_url}}">{{repo.name}}</a></h4>
               <p>{{repo.description}}</p>
               <p>{{repo.stargazers_count}} Stars {{repo.forks}} Forks</p>
             </li>
