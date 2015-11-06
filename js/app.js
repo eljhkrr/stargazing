@@ -1,12 +1,13 @@
-var app = angular.module("stargazing", []);
+var app = angular.module("stargazing", ['ab-base64']);
 var repos = 0;
 //var 
 
-app.controller("StarController", ["$scope", "$http", function($scope, $http){
+app.controller("StarController", ["$scope", "$http", "base64", function($scope, $http, base64){
 
 	$scope.data = null;
 	$scope.repository_list = [];
 	$scope.readme = "Select a repo";
+	$scope.readme.markdown = "Select a repo to view details";
 
 
 	$http({
@@ -35,6 +36,8 @@ app.controller("StarController", ["$scope", "$http", function($scope, $http){
 			$scope.rmdata = response.data;
 			//$scope.repository_list = response.data["data"];
 			$scope.readme = response.data["data"];
+			$scope.readme.markdown = base64.decode(response.data["data"].content);
+			//$scope.readme.markdown = "It works!";
 			console.log(response.data);
 		},function(response){
 			//$scope.status = response.status;
