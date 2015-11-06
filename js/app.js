@@ -2,6 +2,8 @@ var app = angular.module("stargazing", ['ab-base64']);
 var repos = 0;
 //var 
 
+
+
 app.controller("StarController", ["$scope", "$http", "base64", function($scope, $http, base64){
 
 	$scope.data = null;
