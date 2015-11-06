@@ -2,7 +2,16 @@ var app = angular.module("stargazing", ['ab-base64']);
 var repos = 0;
 //var 
 
-
+app.directive('markdown', function(){
+	var converter = new Showdown.converter();
+	return {
+		restrict: 'A',
+		link: function(scope, element, attrs){
+			var htmlText = converter.makeHtml(element.text());
+			element.html(htmlText);
+		}
+	};
+});
 
 app.controller("StarController", ["$scope", "$http", "base64", function($scope, $http, base64){
 
