@@ -1,4 +1,4 @@
-var app = angular.module("stargazing", ['ab-base64']);
+var app = angular.module("stargazing", ['ab-base64', 'ngSanitize']);
 var repos = 0;
 
 //var Showdown = require('showdown');
@@ -15,12 +15,16 @@ var repos = 0;
 // 	};
 // });
 
-app.controller("StarController", ["$scope", "$http", "base64", function($scope, $http, base64){
+app.controller("StarController", ["$scope", "$http", "base64", "$sce", function($scope, $http, base64, $sce){
 
 	$scope.data = null;
 	$scope.repository_list = [];
 	$scope.readme = "Select a repo";
 	$scope.readme.markdown = "Select a repo to view details";
+
+	$scope.deliberatelyTrustDangerousSnippet = function() {
+	  return $sce.trustAsHtml($scope.readme.markdown);
+	};
 
 
 	$http({
