@@ -1,17 +1,19 @@
 var app = angular.module("stargazing", ['ab-base64']);
 var repos = 0;
+
+//var Showdown = require('showdown');
 //var 
 
-app.directive('markdown', function(){
-	var converter = new Showdown.converter();
-	return {
-		restrict: 'A',
-		link: function(scope, element, attrs){
-			var htmlText = converter.makeHtml(element.text());
-			element.html(htmlText);
-		}
-	};
-});
+// app.directive('markdown', function(){
+// 	var converter = new showdown.Converter();
+// 	return {
+// 		restrict: 'A',
+// 		link: function(scope, element, attrs){
+// 			var htmlText = converter.makeHtml(element.text());
+// 			element.html(htmlText);
+// 		}
+// 	};
+// });
 
 app.controller("StarController", ["$scope", "$http", "base64", function($scope, $http, base64){
 
@@ -38,6 +40,7 @@ app.controller("StarController", ["$scope", "$http", "base64", function($scope, 
 	$scope.showReadme = function(name){
 		// console.log(name);
 		var readme_url = 'http://api.github.com/repos/'+name+'/readme?callback=JSON_CALLBACK';
+		var converter = new showdown.Converter();
 		// console.log(url);
 		$http({
 			method: 'JSONP',
@@ -47,7 +50,7 @@ app.controller("StarController", ["$scope", "$http", "base64", function($scope, 
 			$scope.rmdata = response.data;
 			//$scope.repository_list = response.data["data"];
 			$scope.readme = response.data["data"];
-			$scope.readme.markdown = base64.decode(response.data["data"].content);
+			$scope.readme.markdown = converter.makeHtml(base64.decode(response.data["data"].content));
 			//$scope.readme.markdown = "It works!";
 			console.log(response.data);
 		},function(response){
