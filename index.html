@@ -26,17 +26,19 @@
           <p>Click on a repo to view its README</p>
           <ul class="repo_list">
             <li ng-repeat="repo in repository_list">
-              <h4><a href="{{repo.html_url}}">{{repo.name}}</a></h4>
-              <p>{{repo.description}}</p>
-              <p>
-                <a href="{{repo.stargazers_url}}">{{repo.stargazers_count}} Stars</a> 
-                <a href="{{repo.forks_url}}">{{repo.forks}} Forks</a>
-              </p>
+              <button ng-click="showReadme(repo.full_name)">
+                <h4><a href="{{repo.html_url}}">{{repo.name}}</a></h4>
+                <p>{{repo.description}}</p>
+                <p>
+                  <a href="{{repo.stargazers_url}}">{{repo.stargazers_count}} Stars</a> 
+                  <a href="{{repo.forks_url}}">{{repo.forks}} Forks</a>
+                </p>
+              </button>
             </li>
           </ul>
         </div>
         <div class="col-md-8">
-
+            {{readme.content}}
         </div>
       </div>
 
