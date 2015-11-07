@@ -24,11 +24,11 @@
           <h2 class="text-center">All stars</h2>
           <input type="text" class="form-control" />
           <p>Click on a repo to view its README</p>
-          <ul class="repo_list">
+          <ul class="repo_list text-left">
             <li ng-repeat="repo in repository_list">
-              <button ng-click="showReadme(repo.full_name)">
+              <button ng-click="showReadme(repo.full_name)" class="btn btn-default btn-block">
                 <h4><a href="{{repo.html_url}}">{{repo.name}}</a></h4>
-                <p>{{repo.description}}</p>
+                <p class="repo_description">{{repo.description}}</p>
                 <p>
                   <a href="{{repo.stargazers_url}}">{{repo.stargazers_count}} Stars</a> 
                   <a href="{{repo.forks_url}}">{{repo.forks}} Forks</a>

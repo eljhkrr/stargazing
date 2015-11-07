@@ -1,3 +1,15 @@
 .border-right{
   border-right: 1px solid black;
 }
+
+ul.repo_list{
+	padding-left: 0;
+}
+
+.repo_list .repo_description{
+
+}
+
+.repo_list li{
+	list-style-type: none;
+}
