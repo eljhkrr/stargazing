@@ -67,7 +67,7 @@ app.controller("StarController", ["$scope", "$http", "base64", "$sce", function(
 
 	$scope.showReadme = function(name){
 		// console.log(name);
-		var readme_url = 'http://api.github.com/repos/'+name+'/readme?callback=JSON_CALLBACK';
+		var readme_url = 'http://api.github.com/repos/'+name+'/readme?callback=JSON_CALLBACK&per_page=100';
 		var converter = new showdown.Converter();
 		// console.log(url);
 		$http({
