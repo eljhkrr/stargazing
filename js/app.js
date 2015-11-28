@@ -92,17 +92,14 @@ app.controller("StarController", ["$scope", "$http", "base64", "$sce", function(
 		console.log("Link: " + link);
 		console.log("Pages: " + pages);
 		for (var i = 1; i < pages; i++){
-			//console.log("Fetching page: " + (i + 1));
 			var url = $scope.base_url + "&page=" + (i + 1);
 			console.log(url);
 			$http({
 				method: 'JSONP',
 				url: url
 			}).then(function(response){
-				//console.log("Repo list length=" + $scope.repository_list.length);
 				$scope.repository_list= $scope.repository_list.concat(response.data.data);
 				console.log($scope.repository_list);
-				//$scope.$apply();
 			}, function(response){
 				console.log("$http failed");
 			});
